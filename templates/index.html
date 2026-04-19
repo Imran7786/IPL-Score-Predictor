@@ -1,0 +1,98 @@
+<!-- <link rel="stylesheet" href="style.css">
+<script src="script.js"></script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Score Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</body>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glow-text">IPL SCORE <span>PREDICTOR</span></h1>
+        </header>
+
+        <div class="glass-card">
+            <form action="/predict" method="POST">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Batting Team</label>
+                        <select name="batting_team" required>
+                            <option value="" disabled selected>Select Team</option>
+                            <option value="KKR">Kolkata Knight Riders</option>
+                            <option value="DC">Delhi Capitals</option>
+                            <option value="SRH">Sunrisers Hyderabad</option>
+                            <option value="MI">Mumbai Indians</option>
+                            <option value="CSK">Chennai Super Kings</option>
+                            <option value="RCB">Royal Challengers Bangalore</option>
+                            </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Bowling Team</label>
+                        <select name="bowling_team" required>
+                            <option value="" disabled selected>Select Team</option>
+                            <option value="KKR">Kolkata Knight Riders</option>
+                            <option value="DC">Delhi Capitals</option>
+                            <option value="SRH">Sunrisers Hyderabad</option>
+                            <option value="MI">Mumbai Indians</option>
+                            <option value="CSK">Chennai Super Kings</option>
+                            <option value="RCB">Royal Challengers Bangalore</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Overs Completed</label>
+                        <input type="number" step="0.1" name="overs" placeholder="e.g. 10.2" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Current Runs</label>
+                        <input type="number" name="runs" placeholder="Score" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Wickets Lost</label>
+                        <input type="number" name="wickets" placeholder="0-9" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Runs in Last 5 Overs</label>
+                        <input type="number" name="runs_in_prev_5" placeholder="Recent Runs" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Wickets in Last 5 Overs</label>
+                        <input type="number" name="wickets_in_prev_5" placeholder="Recent Wickets" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="predict-btn">CALCULATE PREDICTION</button>
+            </form>
+        </div>
+
+        {% if lower_limit %}
+        <div class="result-box animate-flicker">
+            <h3>PREDICTED FINAL SCORE</h3>
+            <div class="score-range">
+                {{ lower_limit }} — {{ upper_limit }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 IPL Predictor | <strong>Imran Nazir</strong></p>
+            <div class="contact-info">
+                <span>📧 imrannazir2704@gmail.com </span>
+                <span>📞 +91 9117224350</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
