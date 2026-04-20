@@ -77,8 +77,6 @@ def keep_alive():
             print("Pinged successfully!")
         except:
             print("Ping failed.")
-        # Har 14 minute mein ping karega (Render 15 min mein sota hai)
         time.sleep(14 * 60) 
 
-# Isko background thread mein chalayein
 threading.Thread(target=keep_alive, daemon=True).start()
