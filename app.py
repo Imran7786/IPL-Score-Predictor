@@ -63,20 +63,3 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
-# Keep alive code for render
-import threading
-import time
-import requests
-
-def keep_alive():
-    # Website link
-    url = "https://iplscorepredictor-8hwm.onrender.com/" 
-    while True:
-        try:
-            requests.get(url)
-            print("Pinged successfully!")
-        except:
-            print("Ping failed.")
-        time.sleep(14 * 60) 
-
-threading.Thread(target=keep_alive, daemon=True).start()
